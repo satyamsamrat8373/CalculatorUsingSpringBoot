@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Result</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* Heading Styling */
+    h1 {
+      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Result Container */
+    .result-container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    /* Result Text Styling */
+    .result-text {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .result-text strong {
+      color: #007bff;
+    }
+
+    /* Form Styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* Label Styling */
+    label {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    /* Input Styling */
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    /* Button Container */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    /* Button Styling */
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Specific Button Colors */
+    button[name="operation"][value="add"] {
+      background-color: #28a745;
+    }
+
+    button[name="operation"][value="add"]:hover {
+      background-color: #218838;
+    }
+
+    button[name="operation"][value="sub"] {
+      background-color: #dc3545;
+    }
+
+    button[name="operation"][value="sub"]:hover {
+      background-color: #c82333;
+    }
+
+    button[name="operation"][value="mul"] {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    button[name="operation"][value="mul"]:hover {
+      background-color: #e0a800;
+    }
+
+    button[name="operation"][value="div"] {
+      background-color: #17a2b8;
+    }
+
+    button[name="operation"][value="div"]:hover {
+      background-color: #138496;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <h1>Calculation Result</h1>
+    <div class="result-text">
+      <p><strong>Result: </strong> <span th:text="${result}"></span></p>
+	  <p><strong>Operation:</strong> <span th:text="${operation}"></span></p>
+    </div>
+    <form action="/api/calculate" method="POST">
+      <label for="num1">Enter Number 1:</label>
+      <input type="number" id="num1" name="num1" th:value="${num1}" required>
+
+      <label for="num2">Enter Number 2:</label>
+      <input type="number" id="num2" name="num2" th:value="${num2}" required>
+
+      <div class="button-container">
+        <button type="submit" name="operation" value="add">Add</button>
+        <button type="submit" name="operation" value="sub">Subtract</button>
+        <button type="submit" name="operation" value="mul">Multiply</button>
+        <button type="submit" name="operation" value="div">Divide</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
